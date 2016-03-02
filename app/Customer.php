@@ -8,6 +8,9 @@ use App\Faults;
 
 class Customer extends Model
 {
+    
+     protected $fillable = ['city', 'country'];
+    
     public function user(){
         return $this->belongsTo(User::class);        
     }

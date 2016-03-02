@@ -30,5 +30,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/', function () {
         return view('welcome');
     });
+    
+    Route::get('customer/settings', 'CustomerDataController@index');
+    Route::put('customer/settings', 'CustomerDataController@update');
+    
 
 });

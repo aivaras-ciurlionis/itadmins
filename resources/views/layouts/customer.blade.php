@@ -10,11 +10,12 @@
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{{ URL::asset('css/custom-style.css') }}" />
+   
     
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="{{ URL::asset('css/custom-style.css') }}" />
 
     <style>
         body {
@@ -40,7 +41,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand logo" href="{{ url('/') }}">
+                <a class="navbar-brand menu-item logo" href="{{ url('/') }}">
                     It admins
                 </a>
             </div>
@@ -48,16 +49,15 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li class="menu-item selectable"><a href="{{ url('customer/settings') }}">Settings</a></li>
+                    <li class="menu-item selectable"><a href="{{ url('customer/faults/new') }}">Register a new fault</a></li>
+                    <li class="menu-item selectable"><a href="{{ url('customer/faults') }}">Registered faults</a></li>
+                    <li class="menu-item selectable"><a href="{{ url('customer/faults/inprogress') }}">Faults in progress</a></li>
+                    <li class="menu-item selectable"><a href="{{ url('customer/faults/fixed') }}">Fixed faults</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} | {{ Auth::user()->role->name}}<span class="caret"></span>
@@ -67,7 +67,6 @@
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
-                    @endif
                 </ul>
             </div>
         </div>
